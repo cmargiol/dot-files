@@ -6,6 +6,5 @@ alias lz='ls -lrSh'
 alias fucking='sudo'
 alias fuckin='sudo'
 alias fuckyouintellij="ibus-daemon -rd"
-alias plz=/opt/please/please
 alias gt='gst'
 alias gdd='git difftool'

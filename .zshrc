@@ -109,6 +109,8 @@ source ~/.autoenv/activate.sh
 # Gradle -- TODO move to OS specific script?
 export GRADLE_HOME='/usr/lib/gradle/current'
 
-# Nix OS stuff
-source /home/harry/.nix-profile/etc/profile.d/nix.sh
-export MANPATH="$(man -w)"
+# Other stuff custom to local box 
+if [ -f ~/.custom_conf ]; then
+    . ~/.custom_conf
+fi
+

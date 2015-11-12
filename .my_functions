@@ -1,8 +1,0 @@
-run_all_buck_tests_under_path() {
-    if [ -z "$1" ]; then
-	echo "Supply the directory under which the buck tests live"
-    else
-	buck test $(buck targets | grep $1 | grep test | grep -v e2e | tr '\n' ' ')
-    fi
-}
-alias testunder=run_all_buck_tests_under_path
