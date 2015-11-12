@@ -1,11 +1,11 @@
 ; MELPA - various modes (groovy, scala)
 (require 'package)
 (add-to-list 'package-archives
-         '("melpa" . "http://melpa.milkbox.net/packages/") t)
+         '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 (package-refresh-contents)
 
-;; Add libs folder to the 'load-path 
+;; Add libs folder to the 'load-path
 (add-to-list 'load-path "~/.emacs.d/libs/")
 
 ;; Install missing packages
