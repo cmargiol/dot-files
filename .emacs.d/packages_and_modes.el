@@ -1,4 +1,4 @@
-; MELPA - various modes (groovy, scala)
+;; MELPA - various modes (groovy, scala)
 (require 'package)
 (add-to-list 'package-archives
          '("melpa" . "http://melpa.org/packages/") t)
@@ -8,26 +8,42 @@
 ;; Add libs folder to the 'load-path
 (add-to-list 'load-path "~/.emacs.d/libs/")
 
-;; Install missing packages
-(mapc
- (lambda (package)
-   (or (package-installed-p package)
-       (package-install package)))
- '(python-environment
-   jedi
-   indent-guide
-   flycheck
-   git-gutter
-   helm-ls-git
-   json-mode
-   js2-mode
-   go-mode
-   groovy-mode
-   exec-path-from-shell
-   auto-complete
-   go-autocomplete
-   helm-git-grep)
-)
+;; install and load use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(require 'use-package)
+
+;; Use use-package to load all the other packages
+(use-package python-environment
+	     :ensure t)
+(use-package jedi
+	     :ensure t)
+(use-package indent-guide
+	     :ensure t)
+(use-package flycheck
+	     :ensure t)
+(use-package git-gutter
+	     :ensure t)
+(use-package helm-git-grep
+	     :ensure t)
+;; (use-package helm-ls-git
+;; 	     :ensure t)
+(use-package json-mode
+	     :ensure t)
+(use-package js2-mode
+	     :ensure t)
+(use-package go-mode
+	     :ensure t)
+(use-package groovy-mode
+	     :ensure t)
+(use-package exec-path-from-shell
+	     :ensure t)
+(use-package auto-complete
+	     :ensure t)
+(use-package go-autocomplete
+	     :ensure t)
+
 
 ;; groovy mode
 (autoload 'groovy-mode "groovy-mode" "Major mode for editing Groovy code." t)

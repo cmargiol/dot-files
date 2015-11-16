@@ -61,9 +61,6 @@ by using nxml's indentation rules."
 ;; add git info to the gutter
 (global-git-gutter-mode +1)
 
-;; search git repos quickly
-(require 'helm-ls-git)
-
 ;; Save all auto-saves and backups in the directory pointed to by
 ;; temporary-file-directory (the system’s “temp” directory)
 (setq backup-directory-alist
