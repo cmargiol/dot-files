@@ -57,3 +57,9 @@
           '(lambda ()
              (require 'groovy-electric)
              (groovy-electric-mode)))
+
+;; JSON mode 2 space indentation
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
