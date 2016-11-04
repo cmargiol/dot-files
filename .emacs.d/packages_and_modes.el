@@ -43,7 +43,21 @@
 	     :ensure t)
 (use-package go-autocomplete
 	     :ensure t)
-
+(use-package yaml-mode
+             :ensure t)
+(use-package markdown-mode
+             :ensure t
+	     :commands (markdown-mode gfm-mode)
+	     :mode (("README\\.md\\'" . gfm-mode)
+		    ("\\.md\\'" . markdown-mode)
+		    ("\\.markdown\\'" . markdown-mode))
+	     :init (setq markdown-command "multimarkdown"))
+(use-package multiple-cursors
+             :ensure t)
+(use-package all-the-icons
+             :ensure t)
+(use-package neotree
+             :ensure t)
 
 ;; groovy mode
 (autoload 'groovy-mode "groovy-mode" "Major mode for editing Groovy code." t)

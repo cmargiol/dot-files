@@ -57,3 +57,11 @@ vi style of % jumping to matching brace."
   (yank)
 )
 (global-set-key (kbd "C-u") 'duplicate-line)
+
+;; Multiple cursors
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+
+;; Neotree shortcut
+(global-set-key [f8] 'neotree-toggle)

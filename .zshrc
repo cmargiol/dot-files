@@ -5,6 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
+
 ZSH_THEME="harry"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -101,10 +102,6 @@ fi
 
 # Awesome cow
 h=$(date +%H);if [ $h -lt 12 ]; then cowsay Good morning;elif [ $h -lt 18 ]; then cowsay Good afternoon;else;cowsay What the fuck are you still doing here;fi
-
-# python virtualenv
-source '/usr/local/bin/virtualenvwrapper.sh'
-source ~/.autoenv/activate.sh
 
 # Gradle -- TODO move to OS specific script?
 export GRADLE_HOME='/usr/lib/gradle/current'
