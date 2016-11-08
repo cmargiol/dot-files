@@ -106,8 +106,11 @@ h=$(date +%H);if [ $h -lt 12 ]; then cowsay Good morning;elif [ $h -lt 18 ]; the
 # Gradle -- TODO move to OS specific script?
 export GRADLE_HOME='/usr/lib/gradle/current'
 
-# Other stuff custom to local box 
+# Bash completions
+autoload bashcompinit
+bashcompinit
+
+# Other stuff custom to local box
 if [ -f ~/.custom_conf ]; then
     . ~/.custom_conf
 fi
-
