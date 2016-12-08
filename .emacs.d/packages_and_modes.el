@@ -16,33 +16,33 @@
 
 ;; Use use-package to load all the other packages
 (use-package python-environment
-	     :ensure t)
+  :ensure t)
 (use-package jedi
-	     :ensure t)
+  :ensure t)
 (use-package indent-guide
-	     :ensure t)
+  :ensure t)
 (use-package flycheck
-	     :ensure t)
+  :ensure t)
 (use-package git-gutter
-	     :ensure t)
+  :ensure t)
 (use-package helm-git-grep
-	     :ensure t)
+  :ensure t)
 (use-package helm-ls-git
-	     :ensure t)
+  :ensure t)
 (use-package json-mode
-	     :ensure t)
+  :ensure t)
 (use-package js2-mode
-	     :ensure t)
+  :ensure t)
 (use-package go-mode
-	     :ensure t)
+  :ensure t)
 (use-package groovy-mode
-	     :ensure t)
+  :ensure t)
 (use-package exec-path-from-shell
-	     :ensure t)
+  :ensure t)
 (use-package auto-complete
-	     :ensure t)
+  :ensure t)
 (use-package go-autocomplete
-	     :ensure t)
+  :ensure t)
 (use-package yaml-mode
              :ensure t)
 (use-package midnight) ;; clean up stale buffers automatically
@@ -50,18 +50,18 @@
   :init
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
 (use-package markdown-mode
-             :ensure t
-	     :commands (markdown-mode gfm-mode)
-	     :mode (("README\\.md\\'" . gfm-mode)
-		    ("\\.md\\'" . markdown-mode)
-		    ("\\.markdown\\'" . markdown-mode))
-	     :init (setq markdown-command "multimarkdown"))
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+	 ("\\.md\\'" . markdown-mode)
+	 ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 (use-package multiple-cursors
-             :ensure t)
+  :ensure t)
 (use-package all-the-icons
-             :ensure t)
+  :ensure t)
 (use-package neotree
-             :ensure t)
+  :ensure t)
 
 ;; groovy mode
 (autoload 'groovy-mode "groovy-mode" "Major mode for editing Groovy code." t)
