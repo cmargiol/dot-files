@@ -27,8 +27,8 @@
 	     :ensure t)
 (use-package helm-git-grep
 	     :ensure t)
-;; (use-package helm-ls-git
-;; 	     :ensure t)
+(use-package helm-ls-git
+	     :ensure t)
 (use-package json-mode
 	     :ensure t)
 (use-package js2-mode
@@ -45,6 +45,10 @@
 	     :ensure t)
 (use-package yaml-mode
              :ensure t)
+(use-package midnight) ;; clean up stale buffers automatically
+(use-package uniquify
+  :init
+  (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
 (use-package markdown-mode
              :ensure t
 	     :commands (markdown-mode gfm-mode)
