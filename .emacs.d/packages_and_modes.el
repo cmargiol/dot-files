@@ -25,6 +25,16 @@
 	 company-tooltip-limit 20)
   :config (add-hook 'after-init-hook 'global-company-mode))
 
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status)
+  :init (setq magit-last-seen-setup-instructions "1.4.0")
+  :config
+  (use-package magit-gitflow
+    :config (add-hook
+	     'magit-mode-hook
+	     'turn-on-magit-gitflow)))
+
 (use-package ido ;; better switching of buffers and opening of files
   :ensure t
   :config
