@@ -13,8 +13,13 @@
   (setq indent-tabs-mode 1)
   )
 
+(use-package go-mode
+  :ensure t)
+
+(use-package go-autocomplete
+  :ensure t)
+
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
-(require 'go-autocomplete)
 (require 'auto-complete-config)
 (ac-config-default)

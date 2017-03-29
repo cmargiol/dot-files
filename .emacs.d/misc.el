@@ -40,9 +40,6 @@ by using nxml's indentation rules."
 ; Visual bell instead of annoying beep
 (setq visible-bell t)
 
-; Better buffer switching
-;   -- look here http://www.emacswiki.org/cgi-bin/wiki/EmacsNiftyTricks --
-(iswitchb-mode 1)
 ; Add new line *and* indent on hitting enter
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (require 'uniquify)

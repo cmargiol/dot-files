@@ -14,8 +14,10 @@
   (package-install 'use-package))
 (require 'use-package)
 ;; Use use-package to load all the other packages
+
 (use-package python-environment
   :ensure t)
+
 (use-package company ;;complete anything mode
   :ensure t
   :diminish company-mode
@@ -25,6 +27,7 @@
 	 company-minimum-prefix-length 1
 	 company-tooltip-limit 20)
   :config (add-hook 'after-init-hook 'global-company-mode))
+
 (use-package jedi-core
   :config
   (setq jedi:use-shortcuts t) ; M-. and M-,
@@ -35,6 +38,7 @@
     (add-hook 'python-mode-hook
               (lambda () (add-to-list 'company-backends
                                       'company-jedi)))))
+
 (use-package py-autopep8
   :ensure
   :config
@@ -43,6 +47,7 @@
     "Modify python-mode local key map"
     (local-set-key (kbd "C-c C-p") 'py-autopep8-buffer))
   (add-hook 'python-mode-hook 'python-mode-keys))
+
 (use-package ido ;; better switching of buffers and opening of files
   :ensure t
   :config
@@ -54,6 +59,7 @@
     :config (flx-ido-mode 1)
     ;; disable ido faces to see flx highlights.
     (setq ido-use-faces nil)))
+
 (use-package powerline
   :ensure t
   :init
@@ -61,35 +67,44 @@
   (setq powerline-display-mule-info nil)
   (setq powerline-display-hud nil)
   (setq powerline-display-buffer-size nil))
+
 (use-package indent-guide
   :ensure t)
+
 (use-package flycheck
   :ensure t)
+
 (use-package git-gutter
   :ensure t)
+
 (use-package json-mode
   :ensure t)
+
 (use-package js2-mode
   :ensure t)
-(use-package go-mode
-  :ensure t)
+
 (use-package groovy-mode
   :ensure t)
+
 (use-package exec-path-from-shell
   :ensure t)
+
 (use-package auto-complete
   :ensure t)
-(use-package go-autocomplete
-  :ensure t)
+
 (use-package yaml-mode
              :ensure t)
+
 (use-package midnight) ;; clean up stale buffers automatically
+
 (use-package uniquify
   :init
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
+
 (use-package ace-jump-mode
   :ensure
   :bind ("C-c SPC" . ace-jump-mode))
+
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
@@ -97,10 +112,13 @@
 	 ("\\.md\\'" . markdown-mode)
 	 ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
+
 (use-package multiple-cursors
   :ensure t)
+
 (use-package all-the-icons
   :ensure t)
+
 (use-package neotree
   :ensure t)
 
