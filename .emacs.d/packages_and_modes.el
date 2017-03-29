@@ -15,9 +15,6 @@
 (require 'use-package)
 ;; Use use-package to load all the other packages
 
-(use-package python-environment
-  :ensure t)
-
 (use-package company ;;complete anything mode
   :ensure t
   :diminish company-mode
@@ -27,26 +24,6 @@
 	 company-minimum-prefix-length 1
 	 company-tooltip-limit 20)
   :config (add-hook 'after-init-hook 'global-company-mode))
-
-(use-package jedi-core
-  :config
-  (setq jedi:use-shortcuts t) ; M-. and M-,
-  (add-hook 'python-mode-hook 'jedi:setup)
-  (use-package company-jedi
-    :ensure
-    :config
-    (add-hook 'python-mode-hook
-              (lambda () (add-to-list 'company-backends
-                                      'company-jedi)))))
-
-(use-package py-autopep8
-  :ensure
-  :config
-  (setq py-autopep8-options '("--max-line-length=99"))
-  (defun python-mode-keys ()
-    "Modify python-mode local key map"
-    (local-set-key (kbd "C-c C-p") 'py-autopep8-buffer))
-  (add-hook 'python-mode-hook 'python-mode-keys))
 
 (use-package ido ;; better switching of buffers and opening of files
   :ensure t
@@ -127,7 +104,7 @@
 (add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
 (add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
 (add-to-list 'auto-mode-alist '("\.gradle$" . groovy-mode))
-(add-to-list 'auto-mode-alist '("BUCK$" . python-mode))
+(add-to-list 'auto-mode-alist '("BUILD$" . python-mode))
 
 ;;; make Groovy mode electric by default.
 (add-hook 'groovy-mode-hook
