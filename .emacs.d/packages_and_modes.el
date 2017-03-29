@@ -1,7 +1,7 @@
 ;; MELPA - various modes (groovy, scala)
 (require 'package)
 (add-to-list 'package-archives
-         '("melpa" . "http://melpa.org/packages/") t)
+        '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 (package-refresh-contents)
 
@@ -13,21 +13,59 @@
   (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)
-
 ;; Use use-package to load all the other packages
 (use-package python-environment
   :ensure t)
-(use-package jedi
-  :ensure t)
+(use-package company ;;complete anything mode
+  :ensure t
+  :diminish company-mode
+  :init (setq
+	 company-dabbrev-downcase nil      ; preserve case in completions
+	 company-idle-delay 0.1
+	 company-minimum-prefix-length 1
+	 company-tooltip-limit 20)
+  :config (add-hook 'after-init-hook 'global-company-mode))
+(use-package jedi-core
+  :config
+  (setq jedi:use-shortcuts t) ; M-. and M-,
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (use-package company-jedi
+    :ensure
+    :config
+    (add-hook 'python-mode-hook
+              (lambda () (add-to-list 'company-backends
+                                      'company-jedi)))))
+(use-package py-autopep8
+  :ensure
+  :config
+  (setq py-autopep8-options '("--max-line-length=99"))
+  (defun python-mode-keys ()
+    "Modify python-mode local key map"
+    (local-set-key (kbd "C-c C-p") 'py-autopep8-buffer))
+  (add-hook 'python-mode-hook 'python-mode-keys))
+(use-package ido ;; better switching of buffers and opening of files
+  :ensure t
+  :config
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (ido-mode t)
+  (use-package flx-ido  ; better matching
+    :ensure t
+    :config (flx-ido-mode 1)
+    ;; disable ido faces to see flx highlights.
+    (setq ido-use-faces nil)))
+(use-package powerline
+  :ensure t
+  :init
+  (powerline-default-theme)
+  (setq powerline-display-mule-info nil)
+  (setq powerline-display-hud nil)
+  (setq powerline-display-buffer-size nil))
 (use-package indent-guide
   :ensure t)
 (use-package flycheck
   :ensure t)
 (use-package git-gutter
-  :ensure t)
-(use-package helm-git-grep
-  :ensure t)
-(use-package helm-ls-git
   :ensure t)
 (use-package json-mode
   :ensure t)
@@ -49,6 +87,9 @@
 (use-package uniquify
   :init
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
+(use-package ace-jump-mode
+  :ensure
+  :bind ("C-c SPC" . ace-jump-mode))
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)

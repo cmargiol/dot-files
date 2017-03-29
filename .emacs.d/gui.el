@@ -16,21 +16,15 @@
 ;(color-theme-zenburn)
 (color-theme-tango)
 (if (eq system-type 'darwin) ;; on the mac use a larger font (larger resolution)
-    (set-default-font "SourceCodePro-11")
+    (set-face-attribute 'default nil
+			:family "Source Code Pro"
+			:height 125
+			:weight 'normal
+			:width 'normal)
   (set-default-font "SourceCodePro-9")
+					;(set-default-font "Inconsolata-11")
+					;(set-default-font "Consolas-10")
   )
-
-;; Set default font -- figure out how to do this with osx / linux
-;; (set-face-attribute 'default nil
-;;                     :family "Source Code Pro"
-;;                     :height 110
-;;                     :weight 'normal
-;;                     :width 'normal)
-
-
-;(set-default-font "Inconsolata-11")
-;(set-default-font "Consolas-10")
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            GUI config

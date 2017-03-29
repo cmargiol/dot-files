@@ -16,7 +16,7 @@
 ;; jedi hook - http://tkf.github.io/emacs-jedi/latest/ 
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)                 ; optional
-(jedi:install-server)
+;;(jedi:install-server)
 
 
 (add-hook 'python-mode-hook

@@ -9,7 +9,8 @@
   (local-set-key (kbd "C-.") 'godef-jump)
   (local-set-key (kbd "C-i C-r") 'go-remove-unused-imports)
   (local-set-key (kbd "C-i C-a") 'go-import-add)
-
+  (setq tab-width 2)
+  (setq indent-tabs-mode 1)
   )
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)

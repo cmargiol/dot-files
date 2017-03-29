@@ -1,4 +1,10 @@
-;; Load the rest of the settings from the various files
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (load "~/.emacs.d/packages_and_modes.el")
 (load "~/.emacs.d/keyboard.el")
 (load "~/.emacs.d/gui.el")
