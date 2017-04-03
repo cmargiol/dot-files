@@ -1,4 +1,4 @@
-;; MELPA - various modes (groovy, scala)
+;; MELPA - various modes (scala)
 (require 'package)
 (add-to-list 'package-archives
         '("melpa" . "http://melpa.org/packages/") t)
@@ -70,9 +70,6 @@
 (use-package js2-mode
   :ensure t)
 
-(use-package groovy-mode
-  :ensure t)
-
 (use-package exec-path-from-shell
   :ensure t)
 
@@ -109,18 +106,7 @@
 (use-package neotree
   :ensure t)
 
-;; groovy mode
-(autoload 'groovy-mode "groovy-mode" "Major mode for editing Groovy code." t)
-(add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
-(add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
-(add-to-list 'auto-mode-alist '("\.gradle$" . groovy-mode))
 (add-to-list 'auto-mode-alist '("BUILD$" . python-mode))
-
-;;; make Groovy mode electric by default.
-(add-hook 'groovy-mode-hook
-          '(lambda ()
-             (require 'groovy-electric)
-             (groovy-electric-mode)))
 
 ;; JSON mode 2 space indentation
 (add-hook 'json-mode-hook

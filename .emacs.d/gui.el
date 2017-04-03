@@ -22,8 +22,8 @@
 			:weight 'normal
 			:width 'normal)
   (set-default-font "SourceCodePro-9")
-					;(set-default-font "Inconsolata-11")
-					;(set-default-font "Consolas-10")
+  ;(set-default-font "Inconsolata-10.5")
+  ;(set-default-font "Consolas-10")
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

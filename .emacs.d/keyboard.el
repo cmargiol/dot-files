@@ -46,7 +46,7 @@ vi style of % jumping to matching brace."
 (require 'goto-last-change)
 (global-set-key [(control shift backspace)] 'goto-last-change)
 
-;; C-d to duplicate line
+;; C-u to duplicate line
 (defun duplicate-line()
   (interactive)
   (move-beginning-of-line 1)
