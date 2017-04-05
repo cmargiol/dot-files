@@ -89,24 +89,6 @@
   :ensure t
   :init (load-theme 'tango t))
 
-;; (use-package zenburn-theme
-;;   :ensure t
-;;   :init (load-theme 'zenburn t)
-;;   :config
-;;   (zenburn-with-color-variables
-;;     (custom-theme-set-faces
-;;      'zenburn
-;;      `(mode-line
-;;        ((,class (:foreground "black" :background "#f9b593" :box nil))
-;;         (t :inverse-video t)))
-;;      `(mode-line-inactive
-;;        ((t (:foreground ,zenburn-green-1 :background ,zenburn-bg-05 :box nil))))
-;;      `(mode-line-buffer-id ((t (:foreground "black" :weight bold))))
-;;      `(powerline-active1
-;;        ((t (:foreground ,zenburn-green-1 :background ,zenburn-bg-05
-;;                         :inherit mode-line))))
-;;      `(powerline-active2 ((t (:background ,zenburn-bg+2 :inherit mode-line)))))))
-
 (use-package ido ;; better switching of buffers and opening of files
   :ensure t
   :config
