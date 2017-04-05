@@ -35,6 +35,78 @@
 	     'magit-mode-hook
 	     'turn-on-magit-gitflow)))
 
+(use-package helm
+  :ensure t
+  :demand
+  :diminish helm-mode
+  :bind (("M-x" . helm-M-x)
+         ("C-x b" . helm-mini)
+         ("M-s o" . helm-occur))
+  :config (progn
+            (require 'helm-config)
+            (setq helm-ff-file-name-history-use-recentf t)
+            (helm-mode 1)
+            (use-package wgrep-helm :ensure)
+            (use-package helm-projectile
+              :ensure
+              :config (helm-projectile-on))
+            (use-package helm-git-grep
+              :ensure
+              :bind ("M-s g" . helm-git-grep-at-point)
+              :config
+              ;; Disable result limit
+              (setq helm-git-grep-candidate-number-limit nil)
+              ;; Invoke `helm-git-grep' from isearch.
+              (define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
+              ;; Invoke `helm-git-grep' from other helm.
+              (eval-after-load 'helm
+                '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm)))))
+
+(use-package helm-ls-git
+	     :ensure t
+	     :demand)
+
+(use-package projectile ;; Project Interaction Library: e.g. C-c p f will search in the repo for filename
+  :ensure t
+  :config
+  (defun my-format-projectile-modeline ()
+    (propertize (format " |%s|" (projectile-project-name))
+                'face '(:foreground "black" :background "#81a2be")))
+  (defun my-conditional-projectile-modeline ()
+    (if (condition-case nil (and projectile-require-project-root
+                                 (projectile-project-root))
+          (error nil))
+        (my-format-projectile-modeline) ""))
+  (setq projectile-mode-line '(:eval (my-conditional-projectile-modeline)))
+  (projectile-global-mode))
+
+(use-package which-key ;; autocompletion of key combinations
+  :ensure
+  :diminish which-key-mode
+  :config (which-key-mode t))
+
+(use-package tangotango-theme
+  :ensure t
+  :init (load-theme 'tango t))
+
+;; (use-package zenburn-theme
+;;   :ensure t
+;;   :init (load-theme 'zenburn t)
+;;   :config
+;;   (zenburn-with-color-variables
+;;     (custom-theme-set-faces
+;;      'zenburn
+;;      `(mode-line
+;;        ((,class (:foreground "black" :background "#f9b593" :box nil))
+;;         (t :inverse-video t)))
+;;      `(mode-line-inactive
+;;        ((t (:foreground ,zenburn-green-1 :background ,zenburn-bg-05 :box nil))))
+;;      `(mode-line-buffer-id ((t (:foreground "black" :weight bold))))
+;;      `(powerline-active1
+;;        ((t (:foreground ,zenburn-green-1 :background ,zenburn-bg-05
+;;                         :inherit mode-line))))
+;;      `(powerline-active2 ((t (:background ,zenburn-bg+2 :inherit mode-line)))))))
+
 (use-package ido ;; better switching of buffers and opening of files
   :ensure t
   :config
