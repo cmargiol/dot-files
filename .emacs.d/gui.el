@@ -5,16 +5,30 @@
 ;*******************************************************************************
 ; Colour themes
 ;*******************************************************************************
-;(setq load-path (append (list nil "~/.emacs.d/color-themes/") load-path))
-(add-to-list 'load-path "~/.emacs.d/color-themes/")
-(add-to-list 'load-path "~/.emacs.d/color-themes/themes/")
-(require 'color-theme)
-(color-theme-initialize)
-(setq color-theme-is-global t)
-(setq color-theme-is-cumulative t)
-(setq color-theme-load-all-themes nil)
-;(color-theme-zenburn)
-(color-theme-tango)
+(use-package tangotango-theme
+  :ensure t
+  :init (load-theme 'tango t))
+
+;; Alex's theme
+;; (use-package zenburn-theme
+;;   :ensure t
+;;   :init (load-theme 'zenburn t)
+;;   :config
+;;   (zenburn-with-color-variables
+;;     (custom-theme-set-faces
+;;      'zenburn
+;;      `(mode-line
+;;        ((,class (:foreground "black" :background "#f9b593" :box nil))
+;;         (t :inverse-video t)))
+;;      `(mode-line-inactive
+;;        ((t (:foreground ,zenburn-green-1 :background ,zenburn-bg-05 :box nil))))
+;;      `(mode-line-buffer-id ((t (:foreground "black" :weight bold))))
+;;      `(powerline-active1
+;;        ((t (:foreground ,zenburn-green-1 :background ,zenburn-bg-05
+;;                         :inherit mode-line))))
+;;      `(powerline-active2 ((t (:background ,zenburn-bg+2 :inherit mode-line)))))))
+
+
 (if (eq system-type 'darwin) ;; on the mac use a larger font (larger resolution)
     (set-face-attribute 'default nil
 			:family "Source Code Pro"
