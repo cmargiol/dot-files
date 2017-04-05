@@ -26,6 +26,7 @@
 
 ;; git repo search
 (global-set-key (kbd "C-c C-g") 'helm-git-grep)
+(global-set-key (kbd "C-c C-f") 'helm-ls-git-ls)
 
 ;; Add new line *and* indent on hitting enter
 (define-key global-map (kbd "RET") 'newline-and-indent)
