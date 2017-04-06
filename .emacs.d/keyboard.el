@@ -65,4 +65,5 @@ vi style of % jumping to matching brace."
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 
 ;; Neotree shortcut
-(global-set-key [f8] 'neotree-toggle)
+(global-set-key [f12] 'neotree-toggle)
+(global-set-key (kbd "C-c t") 'neotree-toggle)
