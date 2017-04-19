@@ -14,6 +14,8 @@
               (lambda () (add-to-list 'company-backends
                                       'company-jedi)))))
 
+(add-hook 'python-mode-hook 'subword-mode)
+
 (use-package py-autopep8
   :ensure
   :config
@@ -37,7 +39,6 @@
             (goto-char (nth 1 p))))))
 
 ;; jedi hook - http://tkf.github.io/emacs-jedi/latest/
-(add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)                 ; optional
 ;;(jedi:install-server)
 

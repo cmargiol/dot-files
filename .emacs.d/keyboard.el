@@ -26,6 +26,7 @@
 
 ;; git repo search
 (global-set-key (kbd "C-c C-g") 'helm-git-grep)
+(global-set-key (kbd "C-c C-f") 'helm-ls-git-ls)
 
 ;; Add new line *and* indent on hitting enter
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -46,7 +47,7 @@ vi style of % jumping to matching brace."
 (require 'goto-last-change)
 (global-set-key [(control shift backspace)] 'goto-last-change)
 
-;; C-d to duplicate line
+;; C-u to duplicate line
 (defun duplicate-line()
   (interactive)
   (move-beginning-of-line 1)
@@ -64,4 +65,5 @@ vi style of % jumping to matching brace."
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 
 ;; Neotree shortcut
-(global-set-key [f8] 'neotree-toggle)
+(global-set-key [f12] 'neotree-toggle)
+(global-set-key (kbd "C-c t") 'neotree-toggle)

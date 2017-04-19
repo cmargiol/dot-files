@@ -1,4 +1,4 @@
-;; MELPA - various modes (groovy, scala)
+;; MELPA - various modes (scala)
 (require 'package)
 (add-to-list 'package-archives
         '("melpa" . "http://melpa.org/packages/") t)
@@ -35,6 +35,60 @@
 	     'magit-mode-hook
 	     'turn-on-magit-gitflow)))
 
+(use-package helm
+  :ensure t
+  :demand
+  :diminish helm-mode
+  :bind (("M-x" . helm-M-x)
+         ("C-x b" . helm-mini)
+         ("M-s o" . helm-occur))
+  :config (progn
+            (require 'helm-config)
+            (setq helm-ff-file-name-history-use-recentf t)
+            (helm-mode 1)
+            (use-package wgrep-helm :ensure)
+            (use-package helm-projectile
+              :ensure
+              :config (helm-projectile-on))
+            (use-package helm-git-grep
+              :ensure
+              :bind ("M-s g" . helm-git-grep-at-point)
+              :config
+              ;; Disable result limit
+              (setq helm-git-grep-candidate-number-limit nil)
+              ;; Invoke `helm-git-grep' from isearch.
+              (define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
+              ;; Invoke `helm-git-grep' from other helm.
+              (eval-after-load 'helm
+                '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm)))))
+
+(use-package helm-ls-git
+	     :ensure t
+	     :demand)
+
+(use-package projectile ;; Project Interaction Library: e.g. C-c p f will search in the repo for filename
+  :ensure t
+  :config
+  (defun my-format-projectile-modeline ()
+    (propertize (format " |%s|" (projectile-project-name))
+                'face '(:foreground "black" :background "#81a2be")))
+  (defun my-conditional-projectile-modeline ()
+    (if (condition-case nil (and projectile-require-project-root
+                                 (projectile-project-root))
+          (error nil))
+        (my-format-projectile-modeline) ""))
+  (setq projectile-mode-line '(:eval (my-conditional-projectile-modeline)))
+  (projectile-global-mode))
+
+(use-package which-key ;; autocompletion of key combinations
+  :ensure
+  :diminish which-key-mode
+  :config (which-key-mode t))
+
+(use-package tangotango-theme
+  :ensure t
+  :init (load-theme 'tango t))
+
 (use-package ido ;; better switching of buffers and opening of files
   :ensure t
   :config
@@ -68,9 +122,6 @@
   :ensure t)
 
 (use-package js2-mode
-  :ensure t)
-
-(use-package groovy-mode
   :ensure t)
 
 (use-package exec-path-from-shell
@@ -109,18 +160,7 @@
 (use-package neotree
   :ensure t)
 
-;; groovy mode
-(autoload 'groovy-mode "groovy-mode" "Major mode for editing Groovy code." t)
-(add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
-(add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
-(add-to-list 'auto-mode-alist '("\.gradle$" . groovy-mode))
 (add-to-list 'auto-mode-alist '("BUILD$" . python-mode))
-
-;;; make Groovy mode electric by default.
-(add-hook 'groovy-mode-hook
-          '(lambda ()
-             (require 'groovy-electric)
-             (groovy-electric-mode)))
 
 ;; JSON mode 2 space indentation
 (add-hook 'json-mode-hook
