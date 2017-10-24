@@ -35,8 +35,8 @@
 
 (if (eq system-type 'darwin) ;; on the mac use a larger font (larger resolution)
     (set-face-attribute 'default nil
-			:family "Source Code Pro"
-			:height 125
+			:family "Hack"
+			:height 110
 			:weight 'normal
 			:width 'normal)
   (set-default-font "SourceCodePro-9")
@@ -54,5 +54,3 @@
 (tool-bar-mode -1)
 ;; highlight current line
 (global-hl-line-mode 1)
-;; customise hl color
-(set-face-background 'hl-line "gray28")  ;; Emacs 22 Only
