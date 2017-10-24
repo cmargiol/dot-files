@@ -9,3 +9,7 @@ alias fuckyouintellij="ibus-daemon -rd"
 alias gt='gst'
 alias gdd='git difftool'
 alias gitdeletemerged='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
+alias k='kubectl'
+alias k8s='kubectl'
+alias kgc='kubectl config get-contexts'
+alias ksc='kubectl config use-context'
