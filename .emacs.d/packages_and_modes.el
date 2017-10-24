@@ -111,6 +111,8 @@
 
 (use-package indent-guide
   :ensure t)
+(use-package protobuf-mode
+  :ensure t)
 
 (use-package flycheck
   :ensure t)
