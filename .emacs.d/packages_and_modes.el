@@ -135,7 +135,9 @@
 (use-package yaml-mode
              :ensure t)
 
-(use-package midnight) ;; clean up stale buffers automatically
+ ;; clean up stale buffers automatically
+(use-package midnight
+  :ensure t)
 
 (use-package uniquify
   :init
@@ -160,7 +162,9 @@
   :ensure t)
 
 (use-package neotree
-  :ensure t)
+  :ensure t
+  :init
+  (setq neo-smart-open t))
 
 (add-to-list 'auto-mode-alist '("BUILD$" . python-mode))
 
