@@ -173,3 +173,15 @@
           (lambda ()
             (make-local-variable 'js-indent-level)
             (setq js-indent-level 2)))
+
+;; Spell checking
+(dolist (hook '(text-mode-hook
+		markdown-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+
+(dolist (mode '(emacs-lisp-mode-hook
+                inferior-lisp-mode-hook
+                python-mode-hook
+                js-mode-hook))
+  (add-hook mode
+            '(lambda () (flyspell-prog-mode))))
