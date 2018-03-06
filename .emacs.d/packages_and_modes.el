@@ -20,7 +20,7 @@
   :diminish company-mode
   :init (setq
 	 company-dabbrev-downcase nil      ; preserve case in completions
-	 company-idle-delay 0.1
+	 company-idle-delay nil
 	 company-minimum-prefix-length 1
 	 company-tooltip-limit 20)
   :config (add-hook 'after-init-hook 'global-company-mode))
@@ -111,8 +111,8 @@
 
 (use-package indent-guide
   :ensure t)
-(use-package protobuf-mode
-  :ensure t)
+;; (use-package protobuf-mode
+;;  :ensure t)
 
 (use-package flycheck
   :ensure t)
@@ -129,7 +129,7 @@
 (use-package exec-path-from-shell
   :ensure t)
 
-(use-package auto-complete
+(use-package dockerfile-mode
   :ensure t)
 
 (use-package yaml-mode

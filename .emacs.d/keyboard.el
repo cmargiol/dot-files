@@ -67,3 +67,6 @@ vi style of % jumping to matching brace."
 ;; Neotree shortcut
 (global-set-key [f12] 'neotree-toggle)
 (global-set-key (kbd "C-c t") 'neotree-toggle)
+
+;; Autocomplete shortcut
+(global-set-key [C-tab] 'company-complete-common)
